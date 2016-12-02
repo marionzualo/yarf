@@ -1,5 +1,4 @@
 require "yarf/version"
+require "yarf/web_app"
 
-module Yarf
-  Rack::Handler::WEBrick.run ->(env){ [200, {'Content-Type'  => 'text/plain'}, ["Hello, world!"]]}
-end
+Rack::Handler::WEBrick.run Yarf::WebApp
