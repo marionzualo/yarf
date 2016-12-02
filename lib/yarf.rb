@@ -1,4 +1,4 @@
-require "yarf/version"
-require "yarf/web_app"
+require "rack"
+require "yarf_dependencies"
 
 Rack::Handler::WEBrick.run Yarf::WebApp
