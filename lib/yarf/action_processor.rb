@@ -8,7 +8,9 @@ module Yarf
     end
 
     def process(params)
-      action_content = action.call(params)
+      params_hash = HashWithIndifferentAccess.new(params)
+      action_content = action.call(params_hash)
+
       if action_content
         ActionResult.new(success: true, content: action_content.to_json)
       else

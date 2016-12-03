@@ -15,7 +15,7 @@ module Yarf
     def self.router
       @@router ||= begin
         r = Yarf::Router.new
-        action = ->(params) { "Hello #{params["name"]}" }
+        action = ->(params) { "Hello #{params[:name]}" }
         home_route = Yarf::Route.new(path: "/", method: "GET", action: action)
         r.register(home_route)
         r
