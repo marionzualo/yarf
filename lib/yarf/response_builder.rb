@@ -1,11 +1,7 @@
 module Yarf
   class ResponseBuilder
     def build(action_result)
-      if action_result.success?
-        [200, {"Content-Type" => "application/json"}, [action_result.content]]
-      else
-        [500, {"Content-Type" => "application/json"}, [""]]
-      end
+      [200, {"Content-Type" => "application/json"}, [action_result.content]]
     end
 
     def not_found

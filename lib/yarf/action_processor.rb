@@ -11,9 +11,9 @@ module Yarf
       action_content = action.call(params)
       if action_content
         ActionResult.new(success: true, content: action_content.to_json)
+      else
+        ActionResult.new(success: true, content: "")
       end
-    rescue StandardError => e
-      ActionResult.new(success: false, error: e)
     end
 
     private

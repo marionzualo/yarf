@@ -10,16 +10,6 @@ describe Yarf::ResponseBuilder do
         expect(response).to eq(expected_response)
       end
     end
-    context "when the action result is not successful" do
-      it "returns a 500 response" do
-        result = Yarf::ActionResult.new(success: false)
-
-        response = described_class.new.build(result)
-
-        expected_response = [500, {"Content-Type" => "application/json"}, [""]]
-        expect(response).to eq(expected_response)
-      end
-    end
   end
   describe "#not_found" do
     it "returns a 404 response" do
