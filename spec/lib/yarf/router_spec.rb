@@ -30,12 +30,12 @@ describe Yarf::Router do
       end
     end
     context "when the route does not exist" do
-      it "returns the not_found route" do
+      it "does not return a route" do
         router = described_class.new
 
         found_route = router.find(path: "/hello", method: :get)
 
-        expect(found_route).to eq(Yarf::Route.not_found)
+        expect(found_route).to be_nil
       end
     end
   end

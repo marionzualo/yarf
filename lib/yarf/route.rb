@@ -17,10 +17,5 @@ module Yarf
     def hash
       path.hash + method.hash
     end
-
-    def self.not_found
-      action = ->(env) { [404, {"Content-Type"  => "application/json"}, [""]] }
-      new(path: "/not_found", method: :get, action: action)
-    end
   end
 end

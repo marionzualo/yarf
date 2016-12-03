@@ -12,7 +12,7 @@ module Yarf
     end
 
     def find(path:, method:)
-      routes_list.detect { |r| r.path == path && r.method == method } || Yarf::Route.not_found
+      routes_list.detect { |r| r.path == path && r.method == method }
     end
   end
 end
