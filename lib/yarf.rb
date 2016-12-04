@@ -1,4 +1,9 @@
 require "rack"
-require "yarf_dependencies"
-
-Rack::Handler::WEBrick.run Yarf::WebApp
+require "immutable-struct"
+require "yarf/version"
+require "yarf/web_app"
+require "yarf/router"
+require "yarf/route"
+require "yarf/action_processor"
+require "yarf/response_builder"
+require "active_support/hash_with_indifferent_access"

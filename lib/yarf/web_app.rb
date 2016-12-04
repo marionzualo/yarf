@@ -2,7 +2,7 @@ module Yarf
   class WebApp
     def self.call(env)
       req = Rack::Request.new env.dup
-      route = router.find(method: req.request_method, path: req.path)
+      route = web_app_router.find(method: req.request_method, path: req.path)
 
       if route
         action_result = Yarf::ActionProcessor.new(route.action).process(req.params)
@@ -12,14 +12,8 @@ module Yarf
       end
     end
 
-    def self.router
-      @@router ||= begin
-        r = Yarf::Router.new
-        action = ->(params) { "Hello #{params[:name]}" }
-        home_route = Yarf::Route.new(path: "/", method: "GET", action: action)
-        r.register(home_route)
-        r
-      end
+    def self.web_app_router
+      @@web_app_router ||= Yarf::WebAppRouter
     end
 
     def self.response_builder
