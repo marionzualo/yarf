@@ -1,11 +1,12 @@
 module Yarf
   class WebApp
     def self.call(env)
-      req = Rack::Request.new env.dup
+      req = Rack::Request.new env
       route = web_app_router.find(method: req.request_method, path: req.path)
+      params = Yarf::RequestParamsProcessor.new(req).process
 
       if route
-        action_result = Yarf::ActionProcessor.new(route.action).process(req.params)
+        action_result = Yarf::ActionProcessor.new(route.action).process(params)
         response_builder.build(action_result)
       else
         response_builder.not_found
