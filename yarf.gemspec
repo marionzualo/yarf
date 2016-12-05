@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_dependency "rack"
+  spec.add_dependency "rack", "~> 2.0", ">= 2.0.1"
   spec.add_development_dependency "rspec", "~> 3.4", ">= 3.4.0"
   spec.add_dependency "immutable-struct", "~> 2.2", ">= 2.2.2"
   spec.add_dependency "activesupport", "~> 5.0", ">= 5.0.0.1"
