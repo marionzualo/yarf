@@ -30,7 +30,7 @@ get "/foo" do
 end
 
 # `params` contains a deserialized version of the JSON object passed in the request body. The Hash keys are accessible as
-symbols.
+# symbols.
 post "/bar" do |params|
   name = params[:name]
 
@@ -51,6 +51,9 @@ gem "yarf"
 Run the server with `bundle exec rackup --port 3000`.
 
 Play around with the server's endpoints:
+
+The files for this example can be obtained [here](https://github.com/marionzualo/yarf_example_app).
+
 ```
 › curl http://localhost:3000/foo
 {"results":[1,2,3]}%
