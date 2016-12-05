@@ -1,8 +1,6 @@
 # Yarf
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/yarf`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Small web framework for JSON APIs based on [Rack](https://rack.github.io/).
 
 ## Installation
 
@@ -22,7 +20,51 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Given the following files are in a certain directory:
+```ruby
+# config.ru
+require "yarf"
+
+get "/foo" do
+  { results: [1, 2, 3] }
+end
+
+# `params` contains a deserialized version of the JSON object passed in the request body. The Hash keys are accessible as
+symbols.
+post "/bar" do |params|
+  name = params[:name]
+
+  { name: name }
+end
+
+run Yarf::WebApp
+```
+
+```ruby
+# Gemfile
+# frozen_string_literal: true
+source "https://rubygems.org"
+
+gem "yarf"
+```
+
+Run the server with `bundle exec rackup --port 3000`.
+
+Play around with the server's endpoints:
+```
+› curl http://localhost:3000/foo
+{"results":[1,2,3]}%
+
+› curl -XPOST http://localhost:3000/bar -i -H "Content-Type: application/json" -d '{"name": "Mario"}'
+HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+Server: WEBrick/1.3.1 (Ruby/2.3.0/2015-12-25)
+Date: Mon, 05 Dec 2016 05:41:08 GMT
+Connection: Keep-Alive
+
+{"name":"Mario"}%
+```
 
 ## Development
 
@@ -32,5 +74,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/yarf.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/marionzualo/yarf.
