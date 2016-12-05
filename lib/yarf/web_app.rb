@@ -1,7 +1,7 @@
 module Yarf
   class WebApp
     def self.call(env)
-      req = Rack::Request.new env
+      req = Rack::Request.new(env)
       route = web_app_router.find(method: req.request_method, path: req.path)
       params = Yarf::RequestParamsProcessor.new(req).process
 
