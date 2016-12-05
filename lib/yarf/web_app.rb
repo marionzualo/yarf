@@ -14,7 +14,7 @@ module Yarf
     end
 
     def self.web_app_router
-      @@web_app_router ||= Yarf::WebAppRouter
+      Yarf::Router.instance
     end
 
     def self.response_builder
