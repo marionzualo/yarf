@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Mário Nzualo"]
   spec.email         = ["mario.nzualo@gmail.com"]
 
-  spec.summary       = %q{Yet Another Ruby Framework}
+  spec.summary       = %q{Yet Another Ruby Framework - a tiny web framework based on Rack}
   spec.homepage      = "https://github.com/marionzualo/yarf"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
